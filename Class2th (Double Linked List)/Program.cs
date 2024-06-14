@@ -364,28 +364,28 @@
             //doubleLinkedList.PrintAll();
             //Console.WriteLine("List Size : " + doubleLinkedList.GetSize()+"\n");
 
-            DoubleLinkedList<int> doubleLinkedList = new DoubleLinkedList<int>();
-            doubleLinkedList.PushBack(10);
-            doubleLinkedList.PushBack(20);
-            doubleLinkedList.PushBack(30);
-
-            DoubleLinkedList<int>.Node first = doubleLinkedList.First();
-            DoubleLinkedList<int>.Node last = doubleLinkedList.Last();
-            doubleLinkedList.AddAfter(first, 99); // 10 99 20 30
-            doubleLinkedList.AddAfter(last, 333); // 10 99 20 30 333
-            doubleLinkedList.PrintAll();
-
-            Console.WriteLine();
-            //last=doubleLinkedList.Last();
-
-            doubleLinkedList.AddBefor(first, 100); //100 10 99 20 30
-            doubleLinkedList.AddBefor(last, 77); // 100 10 99 20 77 30 333
-            doubleLinkedList.PrintAll();
-            Console.WriteLine(doubleLinkedList.Find(3));
-
-
-            doubleLinkedList.Remove(20);
-            doubleLinkedList.PrintAll();
+            //DoubleLinkedList<int> doubleLinkedList = new DoubleLinkedList<int>();
+            //doubleLinkedList.PushBack(10);
+            //doubleLinkedList.PushBack(20);
+            //doubleLinkedList.PushBack(30);
+            //
+            //DoubleLinkedList<int>.Node first = doubleLinkedList.First();
+            //DoubleLinkedList<int>.Node last = doubleLinkedList.Last();
+            //doubleLinkedList.AddAfter(first, 99); // 10 99 20 30
+            //doubleLinkedList.AddAfter(last, 333); // 10 99 20 30 333
+            //doubleLinkedList.PrintAll();
+            //
+            //Console.WriteLine();
+            ////last=doubleLinkedList.Last();
+            //
+            //doubleLinkedList.AddBefor(first, 100); //100 10 99 20 30
+            //doubleLinkedList.AddBefor(last, 77); // 100 10 99 20 77 30 333
+            //doubleLinkedList.PrintAll();
+            //Console.WriteLine(doubleLinkedList.Find(3));
+            //
+            //
+            //doubleLinkedList.Remove(20);
+            //doubleLinkedList.PrintAll();
         }
     }
 }

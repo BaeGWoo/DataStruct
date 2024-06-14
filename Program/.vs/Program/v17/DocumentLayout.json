@@ -7,6 +7,9 @@
       "RelativeMoniker": "D:0:0:{7B67B866-E2A2-4270-AC76-66E804723732}|Program.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D8572104-47C1-42B0-8A39-0D5A612D0A5A}|..\\Class3th (Circle Linked LIst)\\Class3th (Circle Linked LIst).csproj|c:\\users\\administrator\\desktop\\datastruct\\class3th (circle linked list)\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3708E854-B880-4329-ACC0-0FFB952623CC}|..\\Class2th (Double Linked List)\\Class2th (Double Linked List).csproj|c:\\users\\administrator\\desktop\\datastruct\\class2th (double linked list)\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -20,7 +23,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -52,28 +55,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\DataStruct\\Class1th (SingleLinkedList)\\Program.cs",
               "RelativeDocumentMoniker": "..\\Class1th (SingleLinkedList)\\Program.cs",
               "ToolTip": "C:\\Users\\Administrator\\Desktop\\DataStruct\\Class1th (SingleLinkedList)\\Program.cs",
               "RelativeToolTip": "..\\Class1th (SingleLinkedList)\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAcAAAA",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAowAcAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T05:40:54.208Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\DataStruct\\Class2th (Double Linked List)\\Program.cs",
               "RelativeDocumentMoniker": "..\\Class2th (Double Linked List)\\Program.cs",
               "ToolTip": "C:\\Users\\Administrator\\Desktop\\DataStruct\\Class2th (Double Linked List)\\Program.cs",
               "RelativeToolTip": "..\\Class2th (Double Linked List)\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFYBAAAxAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAAHUBAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T06:08:48.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\DataStruct\\Class3th (Circle Linked LIst)\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Class3th (Circle Linked LIst)\\Program.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\DataStruct\\Class3th (Circle Linked LIst)\\Program.cs",
+              "RelativeToolTip": "..\\Class3th (Circle Linked LIst)\\Program.cs",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAcwIgAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T05:06:02.553Z",
               "EditorCaption": ""
             },
             {
@@ -84,7 +100,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Administrator\\Desktop\\DataStruct\\Program\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAYwAYAAAAaAAAA",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAtwFIAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T05:40:37.318Z",
               "EditorCaption": ""

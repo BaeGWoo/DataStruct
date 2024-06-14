@@ -5,9 +5,11 @@ VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program", "Program.csproj", "{7B67B866-E2A2-4270-AC76-66E804723732}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class1th (SingleLinkedList)", "..\Class1th (SingleLinkedList)\Class1th (SingleLinkedList).csproj", "{268DE2D9-14F1-4E3E-BF25-F3386607C896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Class1th (SingleLinkedList)", "..\Class1th (SingleLinkedList)\Class1th (SingleLinkedList).csproj", "{268DE2D9-14F1-4E3E-BF25-F3386607C896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class2th (Double Linked List)", "..\Class2th (Double Linked List)\Class2th (Double Linked List).csproj", "{3708E854-B880-4329-ACC0-0FFB952623CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Class2th (Double Linked List)", "..\Class2th (Double Linked List)\Class2th (Double Linked List).csproj", "{3708E854-B880-4329-ACC0-0FFB952623CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class3th (Circle Linked LIst)", "..\Class3th (Circle Linked LIst)\Class3th (Circle Linked LIst).csproj", "{D8572104-47C1-42B0-8A39-0D5A612D0A5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{3708E854-B880-4329-ACC0-0FFB952623CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3708E854-B880-4329-ACC0-0FFB952623CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3708E854-B880-4329-ACC0-0FFB952623CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8572104-47C1-42B0-8A39-0D5A612D0A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8572104-47C1-42B0-8A39-0D5A612D0A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8572104-47C1-42B0-8A39-0D5A612D0A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8572104-47C1-42B0-8A39-0D5A612D0A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

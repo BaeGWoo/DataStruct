@@ -1,88 +1,150 @@
 ﻿namespace Program
 {
-    public class CircleLinkedList<T>
+    
+    public class Stack<T>
     {
-        public class Node
+        private T[] array;
+        private int top;
+        private readonly int arraySize;
+        private T error;
+        public Stack()
         {
-            public T data;
-            public Node next;
-        }
-        int size;
-        Node head; //tail의 기능을 수행
-
-        public CircleLinkedList() {
-            size = 0;
-            head = null;
+            arraySize = 10;
+            array = new T[arraySize];
+            top = -1;
         }
 
-        public void PushBack(T data)
+        public int Size()
         {
-            Node newNode=new Node();
-            newNode.data = data;
+            return top+1;
+        }
 
-            if (head == null)
+        public void Push(T data)
+        {
+            if (top >= arraySize - 1)
             {
-                head = newNode;
-                newNode.next = head;
+                Console.WriteLine("Stack OverFlow");
+            }
+            else
+            {
+                array[++top] = data;
+            }
+        }
+
+        public T Peek()
+        {
+            return array[top];
+        }
+
+        public void Show()
+        {
+            for (int i = 0; i <= top; i++)
+            {
+                Console.WriteLine(array[i]);
+            }
+        }
+
+        public T Pop()
+        {
+            if (top <= -1)
+            {
+                Console.WriteLine("Stack is Empty");
+                return error;
             }
 
             else
             {
-                newNode.next = head.next;
-                head.next = newNode;
-                head = newNode;
+                return array[top--];
             }
-            size++;
         }
 
-        public void PushFront(T data)
+        public bool Contains(T data)
         {
-            Node newNode = new Node();
-            newNode.data = data;
-
-            if (head == null)
+            for (int i = 0; i <= top; i++)
             {
-                head = newNode;
-                newNode.next = head;
+                if (array[i].ToString() == data.ToString())
+                    return true;
             }
-
-            else
-            {
-                newNode.next = head.next;
-                head.next = newNode;               
-            }
-            size++;
-        }
-
-        public void PrintAll()
-        {
-            if (head != null)
-            {
-                Node cur = head.next;
-                for (int i = 0; i < size; i++)
-                {
-                    Console.WriteLine(cur.data);
-                    cur = cur.next;
-                }
-                Console.WriteLine();
-            }
-            else
-                Console.WriteLine("List is Empty");
+            return false;
         }
     }
     internal class Program
     {
+
+        static bool CheckBracket(string content)
+        {
+            if (content.Length <= 0)
+                return false;
+
+            Stack<char> stack = new Stack<char>();
+            char[] type = new char[6] { '{', '}', '[', ']', '(', ')' };
+            int type1 = 0;
+            int type2 = 0;
+            int type3 = 0;
+
+            for (int i = 0; i < content.Length; i++)
+            {
+                stack.Push(content[i]);
+            }
+
+            int size = stack.Size();
+            for (int i = 0; i < size; i++)
+            {
+                char result = stack.Pop();
+                for (int j = 0; j < type.Length; j++)
+                {
+                    if (result == type[j])
+                    {
+                        int Bracket = j / 2;
+                        int BracketType = j % 2;
+                        switch (Bracket)
+                        {
+                            case 0:
+                                if (BracketType == 0)
+                                    type1++;
+                                else
+                                    type1--;
+                                break;
+
+                            case 1:
+                                if (BracketType == 0)
+                                    type2++;
+                                else
+                                    type2--;
+                                break;
+
+                            case 2:
+                                if (BracketType == 0)
+                                    type3++;
+                                else
+                                    type3--;
+                                break;
+                        }
+                        if (type1 > 0 || type2 > 0 || type3 > 0)
+                            return false;
+                    }
+                }
+            }
+
+            if (type1 != 0 || type2 != 0 || type3 != 0)
+                return false;
+
+            return true;
+        }
         static void Main(string[] args)
         {
-           CircleLinkedList<int> circleLinkedList = new CircleLinkedList<int>();
-            circleLinkedList.PushBack(10);   // 10
-            circleLinkedList.PushBack(20);   // 10 20
-            circleLinkedList.PushBack(30);   // 10 20 30
-            circleLinkedList.PrintAll();
-
-            circleLinkedList.PushFront(99);  // 99 10 20 30
-            circleLinkedList.PushFront(999); // 999 99 10 20 30 
-            circleLinkedList.PrintAll();
+           //Stack<int> stack = new Stack<int>();
+           // stack.Push(10);
+           // stack.Push(20);
+           // stack.Push(30);
+           // stack.Push(40);
+           // stack.Push(50);
+           // stack.Push(60);
+           //
+           // Console.WriteLine("Stack의 Peek 값 : "+stack.Peek()+"\n");
+           // stack.Show();
+           // Console.WriteLine(CheckBracket("{{()]}"));
+            Console.WriteLine(CheckBracket("}}}{{{"));
         }
     }
 }
