@@ -1,150 +1,101 @@
 ﻿namespace Program
 {
-    
-    public class Stack<T>
+    public class CircularQueue<T>
     {
+        private int count;
+        private int arraySize;
         private T[] array;
-        private int top;
-        private readonly int arraySize;
+        private int front;
+        private int rear;
         private T error;
-        public Stack()
+        
+        public int Count()
         {
-            arraySize = 10;
+            return count;
+        }
+
+        public CircularQueue()
+        {
+            count = 0;
+            arraySize = 5;
             array = new T[arraySize];
-            top = -1;
+            front = arraySize - 1;
+            rear = arraySize - 1;
         }
 
-        public int Size()
+        public void Enqueue(T data)
         {
-            return top+1;
-        }
-
-        public void Push(T data)
-        {
-            if (top >= arraySize - 1)
+            if (rear!=(front-1)%arraySize)
             {
-                Console.WriteLine("Stack OverFlow");
+                rear = (rear + 1) % arraySize;
+                array[rear] = data;
+                count++;
             }
+
             else
             {
-                array[++top] = data;
+                Console.WriteLine("Queue is Full");
+            }
+        }
+
+        public T Dequeue()
+        {
+            if (front != rear)
+            {
+                T result = array[(front+1)%arraySize];
+                array[(front + 1) % arraySize] = error;
+                front=(front+1)% arraySize;
+                count--;
+                return result;
+            }
+
+            else
+            {
+                Console.WriteLine("Queue is Empty");
+                return error;
             }
         }
 
         public T Peek()
         {
-            return array[top];
+            return array[(front + 1) % arraySize];
         }
 
-        public void Show()
+        public void PrintAll()
         {
-            for (int i = 0; i <= top; i++)
+            int start = (front + 1) % arraySize;
+            for(int i = start; i < start+count; i++)
             {
-                Console.WriteLine(array[i]);
+                Console.WriteLine(array[i % arraySize]);
             }
-        }
-
-        public T Pop()
-        {
-            if (top <= -1)
-            {
-                Console.WriteLine("Stack is Empty");
-                return error;
-            }
-
-            else
-            {
-                return array[top--];
-            }
-        }
-
-        public bool Contains(T data)
-        {
-            for (int i = 0; i <= top; i++)
-            {
-                if (array[i].ToString() == data.ToString())
-                    return true;
-            }
-            return false;
         }
     }
     internal class Program
     {
 
-        static bool CheckBracket(string content)
-        {
-            if (content.Length <= 0)
-                return false;
-
-            Stack<char> stack = new Stack<char>();
-            char[] type = new char[6] { '{', '}', '[', ']', '(', ')' };
-            int type1 = 0;
-            int type2 = 0;
-            int type3 = 0;
-
-            for (int i = 0; i < content.Length; i++)
-            {
-                stack.Push(content[i]);
-            }
-
-            int size = stack.Size();
-            for (int i = 0; i < size; i++)
-            {
-                char result = stack.Pop();
-                for (int j = 0; j < type.Length; j++)
-                {
-                    if (result == type[j])
-                    {
-                        int Bracket = j / 2;
-                        int BracketType = j % 2;
-                        switch (Bracket)
-                        {
-                            case 0:
-                                if (BracketType == 0)
-                                    type1++;
-                                else
-                                    type1--;
-                                break;
-
-                            case 1:
-                                if (BracketType == 0)
-                                    type2++;
-                                else
-                                    type2--;
-                                break;
-
-                            case 2:
-                                if (BracketType == 0)
-                                    type3++;
-                                else
-                                    type3--;
-                                break;
-                        }
-                        if (type1 > 0 || type2 > 0 || type3 > 0)
-                            return false;
-                    }
-                }
-            }
-
-            if (type1 != 0 || type2 != 0 || type3 != 0)
-                return false;
-
-            return true;
-        }
         static void Main(string[] args)
         {
-           //Stack<int> stack = new Stack<int>();
-           // stack.Push(10);
-           // stack.Push(20);
-           // stack.Push(30);
-           // stack.Push(40);
-           // stack.Push(50);
-           // stack.Push(60);
-           //
-           // Console.WriteLine("Stack의 Peek 값 : "+stack.Peek()+"\n");
-           // stack.Show();
-           // Console.WriteLine(CheckBracket("{{()]}"));
-            Console.WriteLine(CheckBracket("}}}{{{"));
+            CircularQueue<int> q = new CircularQueue<int>();
+             q.Enqueue(1);
+             q.Enqueue(2);
+            Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다."); 
+            Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다."); 
+            Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다.");
+            q.Enqueue(3);
+             q.Enqueue(4);
+             q.Enqueue(5);
+             q.Enqueue(6);
+            
+             q.PrintAll();
+             Console.WriteLine();
+             Console.WriteLine("Peek 값 : " + q.Peek());
+             Console.WriteLine("Queue의 크기 값 : " + q.Count());
+             Console.WriteLine();
+            
+             Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다.");
+             Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다.");
+             Console.WriteLine("Queue의 크기 값 : " + q.Count());
+             q.PrintAll();
         }
     }
 }
