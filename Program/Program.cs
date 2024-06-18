@@ -1,101 +1,111 @@
-﻿namespace Program
+﻿using System.Data.Common;
+using System.Drawing;
+
+namespace Program
 {
-    public class CircularQueue<T>
+  
+public class Vector<T>
     {
-        private int count;
-        private int arraySize;
-        private T[] array;
-        private int front;
-        private int rear;
+        private int size;
+        private int capacity;
+        private T[] arr;
         private T error;
-        
-        public int Count()
+
+        public Vector()
         {
-            return count;
+            size = 0;
+            capacity = 0;
+            arr = null;
         }
 
-        public CircularQueue()
+        public int Size()
         {
-            count = 0;
-            arraySize = 5;
-            array = new T[arraySize];
-            front = arraySize - 1;
-            rear = arraySize - 1;
+            return size;
         }
 
-        public void Enqueue(T data)
+        public void Resize(int newSize)
         {
-            if (rear!=(front-1)%arraySize)
+            T[] temp = new T[newSize];
+            for (int i = 0; i < size; i++)
             {
-                rear = (rear + 1) % arraySize;
-                array[rear] = data;
-                count++;
+                temp[i] = arr[i];
+            }
+            arr = temp;
+            temp = null;
+            capacity = newSize;
+        }
+
+        public void Add(T data)
+        {
+            if (arr == null)
+            {
+                Resize(1);
             }
 
             else
             {
-                Console.WriteLine("Queue is Full");
+                if (size == capacity)
+                {
+                    Resize(capacity * 2);
+                }
+            }
+            arr[size] = data;
+            size++;
+        }
+
+        public void Reserve(int newSize)
+        {
+            if (newSize > capacity)
+            {
+                Resize(newSize);
             }
         }
 
-        public T Dequeue()
+        public void RemoveAt(int index)
         {
-            if (front != rear)
+            if (index < size)
             {
-                T result = array[(front+1)%arraySize];
-                array[(front + 1) % arraySize] = error;
-                front=(front+1)% arraySize;
-                count--;
-                return result;
+                for(int i = index; i < size-1; i++)
+                {
+                    arr[i] = arr[i + 1];
+                }
+
+                arr[size - 1] = error;
+                size--;
             }
 
             else
             {
-                Console.WriteLine("Queue is Empty");
-                return error;
+                Console.WriteLine("index is out of Range");
             }
         }
 
-        public T Peek()
+    public T this[int index]
         {
-            return array[(front + 1) % arraySize];
+            get { return arr[index]; }
         }
+            
 
-        public void PrintAll()
-        {
-            int start = (front + 1) % arraySize;
-            for(int i = start; i < start+count; i++)
-            {
-                Console.WriteLine(array[i % arraySize]);
-            }
-        }
+      
     }
     internal class Program
     {
 
         static void Main(string[] args)
         {
-            CircularQueue<int> q = new CircularQueue<int>();
-             q.Enqueue(1);
-             q.Enqueue(2);
-            Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다."); 
-            Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다."); 
-            Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다.");
-            q.Enqueue(3);
-             q.Enqueue(4);
-             q.Enqueue(5);
-             q.Enqueue(6);
-            
-             q.PrintAll();
-             Console.WriteLine();
-             Console.WriteLine("Peek 값 : " + q.Peek());
-             Console.WriteLine("Queue의 크기 값 : " + q.Count());
-             Console.WriteLine();
-            
-             Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다.");
-             Console.WriteLine("Queue에서 " + q.Dequeue() + "값이 나왔습니다.");
-             Console.WriteLine("Queue의 크기 값 : " + q.Count());
-             q.PrintAll();
+           Vector<int> vector = new Vector<int>();
+            vector.Add(1);
+            vector.Add(2);
+            vector.Add(3);
+            vector.Add(4);
+            vector.Add(5);
+            vector.Add(6);
+
+            vector.RemoveAt(4);
+            for (int i = 0; i < vector.Size(); i++)
+            {
+                Console.WriteLine(vector[i]);
+            }
         }
     }
 }
