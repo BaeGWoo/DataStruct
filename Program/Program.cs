@@ -1,7 +1,4 @@
-﻿using System.Data.Common;
-using System.Drawing;
-
-namespace Program
+﻿namespace Program
 {
     internal class Program
     {

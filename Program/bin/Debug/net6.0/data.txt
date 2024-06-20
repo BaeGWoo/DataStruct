@@ -1,0 +1,3 @@
+HP : 100
+Level : 13
+Name : Warrior
