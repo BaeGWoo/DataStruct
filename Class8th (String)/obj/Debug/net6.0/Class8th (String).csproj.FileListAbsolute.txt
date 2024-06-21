@@ -1,0 +1,15 @@
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\bin\Debug\net6.0\Class8th (String).exe
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\bin\Debug\net6.0\Class8th (String).deps.json
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\bin\Debug\net6.0\Class8th (String).runtimeconfig.json
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\bin\Debug\net6.0\Class8th (String).dll
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\bin\Debug\net6.0\Class8th (String).pdb
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\Class8th (String).GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\Class8th (String).AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\Class8th (String).AssemblyInfo.cs
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\Class8th (String).csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\Class8th (String).sourcelink.json
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\Class8th (String).dll
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\refint\Class8th (String).dll
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\Class8th (String).pdb
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\Class8th (String).genruntimeconfig.cache
+C:\Users\Administrator\Desktop\DataStruct\Class8th (String)\obj\Debug\net6.0\ref\Class8th (String).dll

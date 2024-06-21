@@ -97,7 +97,10 @@
                         count++;
 
                     if (count == target.Length)
+                    {
+                        if ((i + j + 1 < size) && arr[i + j + 1] == ' ') ;
                         return true;
+                    }
                 }
                 count = 0;
             }
@@ -108,16 +111,20 @@
         public bool Contain2(char[] target)
         {
             int index = 0;
+            char cur = ' ';
             for (int i = 0; i < size; i++)
             {
+
                 if (arr[i] == target[index])
                     index++;
+
                 else index = 0;
+
             }
 
             if (index == target.Length)
                 return true;
-            else return false;
+            return false;
         }
 
     }
@@ -126,22 +133,23 @@
     {
         static void Main(string[] args)
         {
-           // String str1 = new String();
-           // str1.Add(new char[] { 'A', '2', '3', 'B', 'C' });
-           // //str1.Add(new char[] {  });
-           // str1.Show();
-           // Console.WriteLine();
-           // //str1.ConCat(new char[] { '9', '7' });
-           // Console.WriteLine("str1의 크기 : " + str1.Size());
-           // str1.Show();
-           //
-           // Console.WriteLine();
-           // Console.WriteLine(str1.Equal(new char[] { 'A', '2', '3', 'C', 'D' }));
-           // //Console.WriteLine(str1.Equal(new char[] {  }));
-           // Console.WriteLine(str1.IndexOf('2'));
-           //
-           // Console.WriteLine(str1.Contains(new char[] { '3', 'B', 'C' }));
-           // Console.WriteLine(str1.Contain2(new char[] { '3', 'B', 'C' }));
+            String str1 = new String();
+            //str1.Add(new char[] { 'X', 'X', 'X', ' ', ' ','X',' ','X','X','X','X' });
+            str1.Add(new char[] { 'A', 'B', 'X', ' ', ' ', 'X', ' ', 'D', 'C', 'F', 'X' });
+            // //str1.Add(new char[] {  });
+            // str1.Show();
+            // Console.WriteLine();
+            // //str1.ConCat(new char[] { '9', '7' });
+            // Console.WriteLine("str1의 크기 : " + str1.Size());
+            // str1.Show();
+            //
+            // Console.WriteLine();
+            // Console.WriteLine(str1.Equal(new char[] { 'A', '2', '3', 'C', 'D' }));
+            // //Console.WriteLine(str1.Equal(new char[] {  }));
+            // Console.WriteLine(str1.IndexOf('2'));
+            //
+            // Console.WriteLine(str1.Contains(new char[] { '3', 'B', 'C' }));
+            Console.WriteLine(str1.Contain2(new char[] { 'A' }));
 
         }
     }
