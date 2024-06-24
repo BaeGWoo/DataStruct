@@ -1,120 +1,79 @@
 ﻿namespace Program
 {
-    public class HashTable<Key, Value>
+    public class Node
     {
-        private readonly int arraySize;
-        private Bucket[] bucket;
-
-        public class Node
+        public int data;
+        public Node left;
+        public Node right;
+         
+        
+        public Node(int data)
         {
-            public Key key;
-            public Value value;
-
-            public Node next;
-
-            public Node(Key key,Value value)
-            {
-                this.key = key;
-                this.value = value;
-                next = null;
-            }
+            this.data = data;           
         }
-
-       public class Bucket
+    }
+    
+    internal class Program
+    {
+        static public Node CreateNode(int data, Node left, Node right)
         {
-            public int count;
-            public Node head;
+            Node newNode = new Node(data);
+           
+            newNode.left = left;
+            newNode.right = right;
 
-            public Bucket()
-            {
-                count = 0;
-                head = null;
-            }
-        }
-
-        public  HashTable()
-        {
-            arraySize = 6;
-            bucket=new Bucket[arraySize];
-            for(int i = 0; i < arraySize; i++)
-            {
-                Bucket newBucket= new Bucket();
-                bucket[i] = newBucket;
-            }
-        }
-
-        private int HashFunction(Key key)
-        {
-            int result=0;
-            result = int.Parse(key.ToString()) % arraySize;
-            return result;
-        }
-
-        private Node CreateNode(Key key, Value value)
-        {
-            Node newNode=new Node(key,value);
             return newNode;
         }
 
-        public void Insert(Key key, Value value)
+        static public void Preorder(Node cur)
         {
-            int index = HashFunction(key);
-            Node newNode = CreateNode(key, value);
+            Console.WriteLine(cur.data);
 
-            if (bucket[index].head==null)
+            if(cur.left != null)
             {
-                bucket[index].head = newNode;
+                Preorder(cur.left);
             }
 
-            else
+            if(cur.right != null)
             {
-                Node curNode= bucket[index].head;
-                //while(curNode.next != null)
-                //{
-                //    curNode=curNode.next;
-                //}
-                //curNode.next = newNode;
-                newNode.next = curNode;
-                bucket[index].head = newNode;
+                Preorder(cur.right);
             }
-            bucket[index].count++;
         }
 
-
-
-
-        public void Show()
+       static void InOrder(Node root)
         {
-            for (int i = 0; i < arraySize; i++)
+            if(root != null)
             {
-                Node curNode = bucket[i].head;
-                Console.Write("[ " + i + " ] : ");
-                for (int j = 0; j < bucket[i].count; j++)
-                {
-                    Console.Write(curNode.value + " ");
-                    curNode = curNode.next;
-                }
-                Console.WriteLine();
+                InOrder(root.left);
+                Console.Write(root.data+" ");
+                InOrder(root.right);
             }
         }
-    }
-    internal class Program
-    {
-        
+
+        static void NextOrder(Node root)
+        {
+            if (root != null)
+            {
+                NextOrder(root.right);
+                Console.Write(root.data + " ");
+                NextOrder(root.left);
+            }
+        }
+
         static void Main(string[] args)
         {
-            HashTable<int, string> hash = new HashTable<int, string>();
-            hash.Insert(10, "A"); //[4] A
-            hash.Insert(10, "B"); //[4] B A 
-            hash.Insert(10, "C"); //[4] C B A
 
-            hash.Insert(0, "a");  //[0] a
-            hash.Insert(0, "b");  //[0] b a
-            hash.Insert(0, "c");  //[0] c b a
+            Node node4 = CreateNode(4, null, null);
+            Node node5 = CreateNode(5, null, null);
+            Node node6 = CreateNode(6, null, null);
+            Node node7 = CreateNode(7, null, null);
 
-            hash.Show();
+            Node node2 = CreateNode(2, node4, node5);
+            Node node3 = CreateNode(3, node6, node7);
 
+            Node node1 = CreateNode(1, node2, node3);
 
+            NextOrder(node1);
         }
     }
 }
