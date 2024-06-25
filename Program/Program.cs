@@ -1,79 +1,144 @@
 ﻿namespace Program
 {
-    public class Node
+   public class Heap<T>
     {
-        public int data;
-        public Node left;
-        public Node right;
-         
+        int arraySize;
+        int size;
+
+        int[] array;
         
-        public Node(int data)
+        public Heap()
         {
-            this.data = data;           
+            arraySize = 8;
+            size = 0;
+            array=new int[arraySize];
+        }
+
+        public void Swap(int child, int parent)
+        {
+            int temp = array[parent];
+            array[parent] = array[child];
+            array[child] = temp;
+        }
+
+        public void swap(ref int x, ref int y)
+        {
+            int temp = x;
+            x = y;
+            y = temp;
+        }
+
+
+        public void Insert(int data)
+        {
+            if (size+1 >= arraySize)
+            {
+                Console.WriteLine("OverFlow");
+            }
+
+            else
+            {
+                array[++size] = data;
+                
+                int child = size;
+                int parent = size / 2;
+
+                while (child != 1)
+                {
+                    if (array[parent] < array[child])
+                    {
+                        Swap(child, parent);
+                        child = parent;
+                        parent = child / 2;
+                    }
+
+                    else
+                        break;
+                }
+            }
+        }
+
+        public int Remove()
+        {
+            if (size <= 0)
+            {
+                Console.WriteLine("UnderFlow");
+                return -1;
+            }
+
+            int result = array[1];
+            array[1] = array[size];
+            array[size--] = 0;
+
+            int cur = 1;
+            while (cur * 2 < size)
+            {
+                int next;
+                if (cur * 2 + 1 <= size)
+                    next = array[cur * 2] > array[cur * 2 + 1] ? cur * 2 : cur * 2 + 1;
+                else
+                    next = cur * 2;
+
+
+                if (array[next] > array[cur])
+                    swap(ref array[cur], ref array[next]);
+
+                cur = next;
+            }
+
+
+            return result;
+        }
+
+        public void Show()
+        {
+            int level = 1;
+            int goal = 1;
+            int num = 0;
+            int padding = size / 2;
+            for (int i = 1; i <= size; i++)
+            {
+                for(int j=0;j< padding; j++)
+                {
+                    Console.Write(" ");
+                }
+               
+                Console.Write(array[i] + " ");
+                num++;
+
+                if (num == goal)
+                {
+                    goal *= 2;
+                    level++;
+                    num = 0;
+                    Console.WriteLine("\n");
+                    padding /= 2;
+                }
+            }
         }
     }
     
     internal class Program
     {
-        static public Node CreateNode(int data, Node left, Node right)
-        {
-            Node newNode = new Node(data);
-           
-            newNode.left = left;
-            newNode.right = right;
-
-            return newNode;
-        }
-
-        static public void Preorder(Node cur)
-        {
-            Console.WriteLine(cur.data);
-
-            if(cur.left != null)
-            {
-                Preorder(cur.left);
-            }
-
-            if(cur.right != null)
-            {
-                Preorder(cur.right);
-            }
-        }
-
-       static void InOrder(Node root)
-        {
-            if(root != null)
-            {
-                InOrder(root.left);
-                Console.Write(root.data+" ");
-                InOrder(root.right);
-            }
-        }
-
-        static void NextOrder(Node root)
-        {
-            if (root != null)
-            {
-                NextOrder(root.right);
-                Console.Write(root.data + " ");
-                NextOrder(root.left);
-            }
-        }
+       
 
         static void Main(string[] args)
         {
+            Heap<int> heap = new Heap<int>();
+            heap.Insert(5);
+            heap.Insert(10);
+            heap.Insert(7);
+            heap.Insert(8);
+            heap.Insert(15);
+            
+            heap.Insert(9);
+            heap.Insert(1);
 
-            Node node4 = CreateNode(4, null, null);
-            Node node5 = CreateNode(5, null, null);
-            Node node6 = CreateNode(6, null, null);
-            Node node7 = CreateNode(7, null, null);
 
-            Node node2 = CreateNode(2, node4, node5);
-            Node node3 = CreateNode(3, node6, node7);
+            Console.WriteLine("REMOVE : "+heap.Remove()); 
 
-            Node node1 = CreateNode(1, node2, node3);
-
-            NextOrder(node1);
+            heap.Show();
+            
         }
     }
 }
