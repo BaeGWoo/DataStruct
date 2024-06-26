@@ -1,144 +1,120 @@
 ﻿namespace Program
 {
-   public class Heap<T>
+
+    public class AdjacencyList<T>
     {
-        int arraySize;
-        int size;
-
-        int[] array;
-        
-        public Heap()
+        public class Node
         {
-            arraySize = 8;
-            size = 0;
-            array=new int[arraySize];
-        }
+            public T data;
+            public Node next;
 
-        public void Swap(int child, int parent)
-        {
-            int temp = array[parent];
-            array[parent] = array[child];
-            array[child] = temp;
-        }
-
-        public void swap(ref int x, ref int y)
-        {
-            int temp = x;
-            x = y;
-            y = temp;
-        }
-
-
-        public void Insert(int data)
-        {
-            if (size+1 >= arraySize)
+            public Node(T data)
             {
-                Console.WriteLine("OverFlow");
+                this.data = data;
+                next = null;
+            }
+        }
+
+        int size;
+        int arraySize;
+        T[] vertex;
+        Node[] list; 
+
+        public AdjacencyList()
+        {
+            size = 0;
+            arraySize = 10;
+            vertex = new T[arraySize];
+            list = new Node[arraySize];
+        }
+
+        public void Insert(T data)
+        {
+            if (size < arraySize)
+            {
+                vertex[size] = data;
+                list[size++] = new Node(data);
             }
 
             else
             {
-                array[++size] = data;
-                
-                int child = size;
-                int parent = size / 2;
-
-                while (child != 1)
-                {
-                    if (array[parent] < array[child])
-                    {
-                        Swap(child, parent);
-                        child = parent;
-                        parent = child / 2;
-                    }
-
-                    else
-                        break;
-                }
+                Console.WriteLine("List is Full");
             }
         }
 
-        public int Remove()
+        public void ConnectNode(int i,int j)
         {
-            if (size <= 0)
+            Node cur = list[i];
+            while (cur.next != null)
             {
-                Console.WriteLine("UnderFlow");
-                return -1;
+                cur = cur.next;
             }
-
-            int result = array[1];
-            array[1] = array[size];
-            array[size--] = 0;
-
-            int cur = 1;
-            while (cur * 2 < size)
-            {
-                int next;
-                if (cur * 2 + 1 <= size)
-                    next = array[cur * 2] > array[cur * 2 + 1] ? cur * 2 : cur * 2 + 1;
-                else
-                    next = cur * 2;
-
-
-                if (array[next] > array[cur])
-                    swap(ref array[cur], ref array[next]);
-
-                cur = next;
-            }
-
-
-            return result;
+            cur.next = new Node(vertex[j]);
         }
+
+
+        public void Connect(int i, int j)
+        {
+            if (i < 0 || j < 0 || i >= size || j >= size)
+            {
+                Console.WriteLine("Out of Range");
+                return;
+            }
+
+
+            ConnectNode(i, j);
+            ConnectNode(j, i);
+        }
+
 
         public void Show()
         {
-            int level = 1;
-            int goal = 1;
-            int num = 0;
-            int padding = size / 2;
-            for (int i = 1; i <= size; i++)
+            for(int i = 0; i < size; i++)
             {
-                for(int j=0;j< padding; j++)
+                Console.Write("[" + vertex[i] + "] ");
+                Node cur= list[i].next;
+                while (cur != null)
                 {
-                    Console.Write(" ");
+                    Console.Write("=> ");
+                    Console.Write("(" + cur.data + ") ");
+                    cur = cur.next;
                 }
-               
-                Console.Write(array[i] + " ");
-                num++;
-
-                if (num == goal)
-                {
-                    goal *= 2;
-                    level++;
-                    num = 0;
-                    Console.WriteLine("\n");
-                    padding /= 2;
-                }
+                Console.WriteLine();
             }
         }
     }
-    
+
     internal class Program
     {
        
 
         static void Main(string[] args)
         {
-            Heap<int> heap = new Heap<int>();
-            heap.Insert(5);
-            heap.Insert(10);
-            heap.Insert(7);
-            heap.Insert(8);
-            heap.Insert(15);
-            
-            heap.Insert(9);
-            heap.Insert(1);
+            #region 인접 리스트
+            // 그래프의 각 정점에 인접한 정점들을 연결리스트로 
+            // 표현하는 방법입니다.
 
+            // 장점
+            // 그래프의 모든 간선의 수를 O(V+E)로 표현할 수 있습니다.
 
-            Console.WriteLine("REMOVE : "+heap.Remove()); 
+            // 단점
+            // 두 정점을 연결하는 간선을 조회하거나 정점의 차수를 알기 위해
+            // 정점의 인접 리스트를 모두 탐색해야 하므로,
+            // 정점의 차수만큼의 시간이 필요합니다.
+            AdjacencyList<char> list = new AdjacencyList<char>();
+            list.Insert('A');
+            list.Insert('B');
+            list.Insert('C');
+            list.Insert('D');
 
-            heap.Show();
-            
+            list.Connect(0, 1);
+            list.Connect(0, 2);
+            list.Connect(2, 3);
+           
+
+            list.Show();
+            #endregion
+
         }
     }
 }
